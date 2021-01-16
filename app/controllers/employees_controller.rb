@@ -24,14 +24,16 @@ class EmployeesController < ApplicationController
     
     def edit
         @employee = Employee.find(params[:id])
-        
-        # render :edit
     end 
     
     def update
         @employee = Employee.find(params[:id])
-        @employee.update(employee_params)
-        redirect_to employees_path(@employee)
+        if @employee.update(employee_params)
+            redirect_to employee_path(@employee)
+        else
+            flash[:errors_array] = @employee.errors.full_messages
+            redirect_to edit_employee_path
+        end
     end 
 
      

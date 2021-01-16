@@ -1,5 +1,11 @@
 <h1>Edit Employee<h1>
 
+<% if flash[:errors_array] %>
+    <% flash[:errors_array].each do |error| %>
+        <p> <%= error %> </p>
+    <% end %>
+<% end %>
+
 <%= form_for @employee do |f| %>
 
     <%= f.label :first_name, "Employee First Name" %>

@@ -10,5 +10,4 @@ class DogsController < ApplicationController
   
 
 
-
 end
